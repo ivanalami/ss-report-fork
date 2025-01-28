@@ -71,7 +71,7 @@ export const extractCategoryFromTest = (test, testCategoriesAvailable) => {
 };
 
 /**
- * Extracts the spec name from a full file path, assuming the file name ends with '.spec.ts'.
+ * Extracts the spec name from a full file path, assuming the file name ends with 'feature'.
  *
  * @param {string} fullFilePath The full file path from which to extract the spec name.
  * @returns {string} The extracted spec name without the '.spec.ts', '.cy.js', '.test.jsx', etc. extension.
@@ -84,11 +84,11 @@ export const extractSpecFromFullFile = (fullFilePath) => {
   }
   const segments = fullFilePath.split('/');
   const fileName = segments.pop();
-  const regex = /\.(spec|cy|test)\.(ts|js|jsx|tsx)$/;
+  const regex = /\.feature$/;
 
   if (!regex.test(fileName)) {
     throw new Error(
-      'The file name format is unexpected. It should end with .spec.ts, .cy.js, .test.jsx, etc.'
+      'The file name format is unexpected. It should end with .feature.'
     );
   }
 
